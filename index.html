@@ -1,0 +1,475 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>FIC SENAI | PLANILHAS ELETRÔNICAS</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      :root {
+        /* Excel-inspired color palette */
+        --excel-green: #217346;
+        --excel-green-dark: #18522f;
+        --excel-green-light: #33c481;
+        --excel-header: #18522f;
+        --excel-white: #ffffff;
+        --excel-gray-100: #f3f3f3;
+        --excel-gray-200: #e8e8e8;
+        --excel-gray-300: #d1d1d1;
+        --excel-gray-600: #767676;
+        --excel-gray-700: #5c5c5c;
+        --excel-gray-800: #404040;
+        --excel-gray-900: #2d2d2d;
+        --excel-dark: #1a1a1a;
+
+        --bg-primary: #f3f3f3;
+        --bg-card: #ffffff;
+        --bg-header: #217346;
+        --text-primary: #2d2d2d;
+        --text-secondary: #5c5c5c;
+        --text-muted: #767676;
+        --text-light: #ffffff;
+        --border-card: #d1d1d1;
+        --border-hover: #217346;
+        --shadow-card: 0 2px 8px rgba(0, 0, 0, 0.08);
+        --shadow-hover: 0 6px 20px rgba(0, 0, 0, 0.12);
+        --radius-card: 4px;
+        --transition-smooth: 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+      }
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family:
+          "Inter",
+          -apple-system,
+          BlinkMacSystemFont,
+          "Segoe UI",
+          sans-serif;
+        background-color: var(--bg-primary);
+        min-height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        color: var(--text-primary);
+        padding: 40px 20px;
+        overflow-x: hidden;
+      }
+
+      /* Subtle grid pattern background */
+      body::before {
+        content: "";
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background-image:
+          linear-gradient(rgba(33, 115, 70, 0.03) 1px, transparent 1px),
+          linear-gradient(90deg, rgba(33, 115, 70, 0.03) 1px, transparent 1px);
+        background-size: 40px 40px;
+        pointer-events: none;
+        z-index: 0;
+      }
+
+      /* Main container */
+      .container {
+        position: relative;
+        z-index: 1;
+        width: 100%;
+        max-width: 780px;
+        text-align: center;
+      }
+
+      /* Header card */
+      .header {
+        background: var(--bg-header);
+        border-radius: var(--radius-card) var(--radius-card) 0 0;
+        padding: 32px 24px 28px;
+        margin-bottom: 0;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      }
+
+      .header-content {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 16px;
+        margin-bottom: 12px;
+      }
+
+      .logo-icon {
+        width: 48px;
+        height: 48px;
+        background: rgba(255, 255, 255, 0.15);
+        border-radius: 8px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 24px;
+        backdrop-filter: blur(10px);
+      }
+
+      .header-text {
+        text-align: left;
+      }
+
+      .header-label {
+        font-size: 10px;
+        letter-spacing: 3px;
+        color: rgba(255, 255, 255, 0.7);
+        text-transform: uppercase;
+        font-weight: 500;
+        display: block;
+        margin-bottom: 2px;
+      }
+
+      h1 {
+        font-size: 1.75rem;
+        font-weight: 700;
+        color: var(--text-light);
+        letter-spacing: -0.3px;
+        line-height: 1.2;
+      }
+
+      .header-subtitle {
+        font-size: 13px;
+        color: rgba(255, 255, 255, 0.8);
+        font-weight: 400;
+        margin-top: 8px;
+        letter-spacing: 0.3px;
+      }
+
+      /* Content area */
+      .content-area {
+        background: var(--bg-card);
+        border: 1px solid var(--border-card);
+        border-top: none;
+        border-radius: 0 0 var(--radius-card) var(--radius-card);
+        padding: 32px 24px 28px;
+        box-shadow: var(--shadow-card);
+      }
+
+      /* Section label with Excel-style */
+      .section-label {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 10px;
+        margin-bottom: 24px;
+      }
+
+      .section-label-line {
+        height: 1px;
+        width: 40px;
+        background: var(--excel-gray-300);
+      }
+
+      .section-label-text {
+        font-size: 11px;
+        color: var(--text-muted);
+        letter-spacing: 2px;
+        font-weight: 600;
+        text-transform: uppercase;
+      }
+
+      /* Cards grid */
+      .cards-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 16px;
+        margin-bottom: 32px;
+      }
+
+      @media (max-width: 700px) {
+        .cards-grid {
+          grid-template-columns: 1fr;
+          max-width: 340px;
+          margin-left: auto;
+          margin-right: auto;
+        }
+
+        h1 {
+          font-size: 1.5rem;
+        }
+
+        .header {
+          padding: 24px 20px 22px;
+        }
+
+        .content-area {
+          padding: 24px 20px 22px;
+        }
+      }
+
+      /* Card */
+      .card {
+        position: relative;
+        background: var(--bg-card);
+        border: 1px solid var(--border-card);
+        border-radius: var(--radius-card);
+        padding: 24px 16px 20px;
+        text-decoration: none;
+        color: var(--text-primary);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 10px;
+        transition: all var(--transition-smooth);
+        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
+        overflow: hidden;
+      }
+
+      /* Excel-style accent bar on top */
+      .card::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 3px;
+        transition: height var(--transition-smooth);
+      }
+
+      .card:hover::before {
+        height: 4px;
+      }
+
+      .card:hover {
+        transform: translateY(-2px);
+        border-color: var(--border-hover);
+        box-shadow: var(--shadow-hover);
+      }
+
+      /* Card color accents - Excel palette */
+      .card--green::before {
+        background: var(--excel-green);
+      }
+
+      .card--green:hover {
+        border-color: var(--excel-green);
+        box-shadow: 0 6px 20px rgba(33, 115, 70, 0.12);
+      }
+
+      .card--green-light::before {
+        background: var(--excel-green-light);
+      }
+
+      .card--green-light:hover {
+        border-color: var(--excel-green-light);
+        box-shadow: 0 6px 20px rgba(51, 196, 129, 0.12);
+      }
+
+      .card--dark::before {
+        background: var(--excel-header);
+      }
+
+      .card--dark:hover {
+        border-color: var(--excel-header);
+        box-shadow: 0 6px 20px rgba(24, 82, 47, 0.12);
+      }
+
+      /* Card content */
+      .card-icon {
+        font-size: 1.8rem;
+        transition: transform var(--transition-smooth);
+        position: relative;
+        z-index: 1;
+        margin-bottom: 2px;
+      }
+
+      .card:hover .card-icon {
+        transform: scale(1.08);
+      }
+
+      .card-title {
+        font-size: 0.9rem;
+        font-weight: 600;
+        letter-spacing: -0.2px;
+        position: relative;
+        z-index: 1;
+        color: var(--text-primary);
+      }
+
+      .card-subtitle {
+        font-size: 0.7rem;
+        color: var(--text-muted);
+        letter-spacing: 0.8px;
+        text-transform: uppercase;
+        font-weight: 500;
+        position: relative;
+        z-index: 1;
+      }
+
+      .card-badge {
+        display: inline-block;
+        font-size: 0.65rem;
+        font-weight: 600;
+        letter-spacing: 1px;
+        text-transform: uppercase;
+        color: var(--excel-green);
+        background: rgba(33, 115, 70, 0.08);
+        padding: 4px 10px;
+        border-radius: 3px;
+        position: relative;
+        z-index: 1;
+        transition: all var(--transition-smooth);
+      }
+
+      .card:hover .card-badge {
+        background: var(--excel-green);
+        color: var(--text-light);
+      }
+
+      /* Footer */
+      .footer {
+        border-top: 1px solid var(--excel-gray-200);
+        padding-top: 20px;
+        margin-top: 4px;
+      }
+
+      .footer-info {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 12px;
+        flex-wrap: wrap;
+      }
+
+      .footer-item {
+        display: flex;
+        align-items: center;
+        gap: 6px;
+        font-size: 11px;
+        color: var(--text-muted);
+        letter-spacing: 0.3px;
+        font-weight: 500;
+      }
+
+      .footer-dot {
+        width: 3px;
+        height: 3px;
+        background: var(--excel-gray-300);
+        border-radius: 50%;
+      }
+
+      .footer-brand {
+        font-size: 10px;
+        color: var(--excel-gray-600);
+        letter-spacing: 1.5px;
+        text-transform: uppercase;
+        font-weight: 600;
+        margin-top: 10px;
+      }
+
+      /* Tooltip style on hover */
+      .card-tooltip {
+        position: absolute;
+        top: -30px;
+        left: 50%;
+        transform: translateX(-50%) translateY(4px);
+        background: var(--excel-gray-900);
+        color: var(--text-light);
+        font-size: 0.7rem;
+        padding: 4px 10px;
+        border-radius: 3px;
+        white-space: nowrap;
+        opacity: 0;
+        pointer-events: none;
+        transition: all var(--transition-smooth);
+        font-weight: 500;
+        letter-spacing: 0.3px;
+      }
+
+      .card:hover .card-tooltip {
+        opacity: 1;
+        transform: translateX(-50%) translateY(0);
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <!-- Header -->
+      <header class="header">
+        <div class="header-content">
+          <div class="logo-icon">📊</div>
+          <div class="header-text">
+            <span class="header-label">PLANILHAS ELETRÔNICAS</span>
+            <h1>FIC - SENAI</h1>
+          </div>
+        </div>
+        <p class="header-subtitle">
+          Ambiente centralizado de recursos acadêmicos
+        </p>
+      </header>
+
+      <!-- Content area -->
+      <div class="content-area">
+        <!-- Section label -->
+        <div class="section-label">
+          <span class="section-label-line"></span>
+          <span class="section-label-text">Acessos rápidos</span>
+          <span class="section-label-line"></span>
+        </div>
+
+        <!-- Cards -->
+        <div class="cards-grid">
+          <!-- Card 1: Google Meet -->
+          <a
+            href="./pages/sco_01.html"
+            rel="noopener noreferrer"
+            class="card card--green"
+            title="Acessar sala de aula virtual"
+          >
+            <span class="card-tooltip">Sala virtual</span>
+            <span class="card-icon">📋</span>
+            <span class="card-title">Aula 01</span>
+            <span class="card-subtitle">Atividades</span>
+            <span class="card-badge">Acessar</span>
+          </a>
+
+          <!-- Card 2: Desafio -->
+          <a
+            href="./pages/sco_02.html"
+            class="card card--green-light"
+            title="Acessar atividade prática"
+          >
+            <span class="card-tooltip">Atividade</span>
+            <span class="card-icon">📋</span>
+            <span class="card-title">Aula 02</span>
+            <span class="card-subtitle">Atividades</span>
+            <span class="card-badge">Acessar</span>
+          </a>
+
+          <!-- Card 3: Planilha -->
+          <a
+            href="./pages/sco_02.html"
+            rel="noopener noreferrer"
+            class="card card--dark"
+            title="Acessar planilha de recursos"
+          >
+            <span class="card-tooltip">Recursos</span>
+            <span class="card-icon">✍️</span>
+            <span class="card-title">Prova</span>
+            <span class="card-subtitle">Links e assets</span>
+            <span class="card-badge">Acessar</span>
+          </a>
+        </div>
+
+        <!-- Footer -->
+        <footer class="footer">
+          <p class="footer-brand">Divisão de Tecnologia Educacional</p>
+        </footer>
+      </div>
+    </div>
+  </body>
+</html>

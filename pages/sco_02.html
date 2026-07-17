@@ -1,0 +1,1969 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Atividades Excel Parte 2 | Hub Professor</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      :root {
+        --excel-green: #217346;
+        --excel-green-dark: #18522f;
+        --excel-green-light: #33c481;
+        --excel-header: #18522f;
+        --excel-white: #ffffff;
+        --excel-gray-50: #f9fafb;
+        --excel-gray-100: #f3f3f3;
+        --excel-gray-200: #e8e8e8;
+        --excel-gray-300: #d1d1d1;
+        --excel-gray-400: #a0a0a0;
+        --excel-gray-500: #888888;
+        --excel-gray-600: #767676;
+        --excel-gray-700: #5c5c5c;
+        --excel-gray-800: #404040;
+        --excel-gray-900: #2d2d2d;
+        --excel-dark: #1a1a1a;
+
+        --bg-primary: #f3f3f3;
+        --bg-card: #ffffff;
+        --bg-header: #217346;
+        --text-primary: #2d2d2d;
+        --text-secondary: #5c5c5c;
+        --text-muted: #767676;
+        --text-light: #ffffff;
+        --border-card: #d1d1d1;
+        --border-light: #e8e8e8;
+        --border-hover: #217346;
+        --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.06);
+        --shadow-card: 0 2px 8px rgba(0, 0, 0, 0.08);
+        --shadow-hover: 0 6px 20px rgba(0, 0, 0, 0.12);
+        --radius-sm: 4px;
+        --radius-md: 6px;
+        --radius-card: 8px;
+        --radius-lg: 12px;
+        --transition-smooth: 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+      }
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family:
+          "Inter",
+          -apple-system,
+          BlinkMacSystemFont,
+          "Segoe UI",
+          sans-serif;
+        background-color: var(--bg-primary);
+        min-height: 100vh;
+        color: var(--text-primary);
+        padding: 20px;
+        line-height: 1.6;
+      }
+
+      body::before {
+        content: "";
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background-image:
+          linear-gradient(rgba(33, 115, 70, 0.03) 1px, transparent 1px),
+          linear-gradient(90deg, rgba(33, 115, 70, 0.03) 1px, transparent 1px);
+        background-size: 40px 40px;
+        pointer-events: none;
+        z-index: 0;
+      }
+
+      .container {
+        position: relative;
+        z-index: 1;
+        max-width: 960px;
+        margin: 0 auto;
+      }
+
+      /* Back button */
+      .back-btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        text-decoration: none;
+        color: var(--text-secondary);
+        font-size: 13px;
+        font-weight: 600;
+        letter-spacing: 0.3px;
+        margin-bottom: 20px;
+        padding: 8px 16px;
+        background: var(--bg-card);
+        border: 1px solid var(--border-card);
+        border-radius: var(--radius-md);
+        transition: all var(--transition-smooth);
+        box-shadow: var(--shadow-sm);
+      }
+
+      .back-btn:hover {
+        color: var(--excel-green);
+        border-color: var(--excel-green);
+        box-shadow: var(--shadow-hover);
+      }
+
+      /* Header */
+      .page-header {
+        background: var(--bg-header);
+        border-radius: var(--radius-lg) var(--radius-lg) 0 0;
+        padding: 36px 32px 32px;
+        margin-bottom: 0;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      }
+
+      .page-header-content {
+        display: flex;
+        align-items: center;
+        gap: 20px;
+        margin-bottom: 12px;
+      }
+
+      .page-header-icon {
+        width: 56px;
+        height: 56px;
+        background: rgba(255, 255, 255, 0.15);
+        border-radius: 12px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 28px;
+        backdrop-filter: blur(10px);
+        flex-shrink: 0;
+      }
+
+      .page-header-text {
+        text-align: left;
+      }
+
+      .page-header-label {
+        font-size: 10px;
+        letter-spacing: 3px;
+        color: rgba(255, 255, 255, 0.7);
+        text-transform: uppercase;
+        font-weight: 500;
+        display: block;
+        margin-bottom: 4px;
+      }
+
+      .page-header h1 {
+        font-size: 1.75rem;
+        font-weight: 700;
+        color: var(--text-light);
+        letter-spacing: -0.3px;
+        line-height: 1.2;
+      }
+
+      .page-header-subtitle {
+        font-size: 13px;
+        color: rgba(255, 255, 255, 0.8);
+        font-weight: 400;
+        margin-top: 8px;
+        letter-spacing: 0.3px;
+      }
+
+      .page-header-meta {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+        margin-top: 16px;
+      }
+
+      .page-header-tag {
+        background: rgba(255, 255, 255, 0.12);
+        color: rgba(255, 255, 255, 0.9);
+        padding: 5px 14px;
+        border-radius: 20px;
+        font-size: 11px;
+        font-weight: 600;
+        letter-spacing: 0.5px;
+        border: 1px solid rgba(255, 255, 255, 0.15);
+      }
+
+      /* Info banner */
+      .info-banner {
+        background: rgba(33, 115, 70, 0.06);
+        border: 1px solid rgba(33, 115, 70, 0.2);
+        border-radius: var(--radius-md);
+        padding: 14px 20px;
+        margin-bottom: 24px;
+        display: flex;
+        align-items: center;
+        gap: 12px;
+      }
+
+      .info-banner-icon {
+        font-size: 24px;
+        flex-shrink: 0;
+      }
+
+      .info-banner-text {
+        font-size: 13px;
+        color: var(--text-secondary);
+        line-height: 1.6;
+      }
+
+      .info-banner-text strong {
+        color: var(--excel-green);
+      }
+
+      /* Content area */
+      .content-area {
+        background: var(--bg-card);
+        border: 1px solid var(--border-card);
+        border-top: none;
+        border-radius: 0 0 var(--radius-lg) var(--radius-lg);
+        padding: 32px 28px 28px;
+        box-shadow: var(--shadow-card);
+      }
+
+      /* Section */
+      .section {
+        margin-bottom: 40px;
+      }
+
+      .section:last-child {
+        margin-bottom: 0;
+      }
+
+      .section-header {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        margin-bottom: 20px;
+        padding-bottom: 14px;
+        border-bottom: 2px solid var(--excel-gray-200);
+      }
+
+      .section-number {
+        width: 40px;
+        height: 40px;
+        background: var(--excel-green);
+        color: var(--text-light);
+        border-radius: 8px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-weight: 800;
+        font-size: 16px;
+        flex-shrink: 0;
+      }
+
+      .section-title-group {
+        display: flex;
+        flex-direction: column;
+      }
+
+      .section-title {
+        font-size: 1.25rem;
+        font-weight: 700;
+        color: var(--text-primary);
+        letter-spacing: -0.2px;
+      }
+
+      .section-subtitle {
+        font-size: 12px;
+        color: var(--text-muted);
+        letter-spacing: 0.5px;
+        font-weight: 500;
+      }
+
+      /* Activity card */
+      .activity {
+        background: var(--excel-gray-50);
+        border: 1px solid var(--border-light);
+        border-radius: var(--radius-card);
+        padding: 24px;
+        margin-bottom: 16px;
+        transition: all var(--transition-smooth);
+        box-shadow: var(--shadow-sm);
+      }
+
+      .activity:hover {
+        border-color: var(--border-hover);
+        box-shadow: var(--shadow-hover);
+      }
+
+      .activity-header {
+        display: flex;
+        align-items: flex-start;
+        gap: 12px;
+        margin-bottom: 16px;
+      }
+
+      .activity-number {
+        width: 32px;
+        height: 32px;
+        background: var(--excel-green);
+        color: var(--text-light);
+        border-radius: 6px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-weight: 700;
+        font-size: 13px;
+        flex-shrink: 0;
+      }
+
+      .activity-title {
+        font-size: 1rem;
+        font-weight: 700;
+        color: var(--text-primary);
+        letter-spacing: -0.2px;
+        line-height: 1.4;
+      }
+
+      .activity-tab {
+        display: inline-block;
+        background: rgba(33, 115, 70, 0.08);
+        color: var(--excel-green);
+        font-size: 10px;
+        font-weight: 700;
+        letter-spacing: 1px;
+        text-transform: uppercase;
+        padding: 3px 10px;
+        border-radius: 4px;
+        margin-left: 8px;
+        border: 1px solid rgba(33, 115, 70, 0.2);
+      }
+
+      .activity-description {
+        color: var(--text-secondary);
+        font-size: 13px;
+        line-height: 1.8;
+        margin-bottom: 14px;
+      }
+
+      .activity-description p {
+        margin-bottom: 6px;
+      }
+
+      .activity-description ul,
+      .activity-description ol {
+        margin-left: 20px;
+        margin-bottom: 8px;
+      }
+
+      .activity-description li {
+        margin-bottom: 4px;
+      }
+
+      /* Table styles */
+      .table-wrapper {
+        overflow-x: auto;
+        margin: 16px 0;
+        border: 1px solid var(--border-card);
+        border-radius: var(--radius-sm);
+        box-shadow: var(--shadow-sm);
+      }
+
+      .excel-table {
+        width: 100%;
+        border-collapse: collapse;
+        font-size: 13px;
+        min-width: 400px;
+      }
+
+      .excel-table thead th {
+        background: var(--excel-header);
+        color: var(--text-light);
+        font-weight: 600;
+        padding: 10px 14px;
+        text-align: left;
+        font-size: 12px;
+        letter-spacing: 0.3px;
+        border: 1px solid rgba(255, 255, 255, 0.15);
+        white-space: nowrap;
+      }
+
+      .excel-table tbody td {
+        padding: 9px 14px;
+        border: 1px solid var(--border-light);
+        color: var(--text-primary);
+        background: var(--bg-card);
+      }
+
+      .excel-table tbody tr:nth-child(even) td {
+        background: var(--excel-gray-50);
+      }
+
+      .excel-table tbody tr:hover td {
+        background: rgba(33, 115, 70, 0.04);
+      }
+
+      /* Empty cell for calculation */
+      .calc-cell {
+        background: rgba(33, 115, 70, 0.04) !important;
+        color: var(--excel-gray-400) !important;
+        font-style: italic;
+        font-size: 11px;
+      }
+
+      /* Image placeholder */
+      .image-placeholder {
+        background: var(--excel-gray-100);
+        border: 2px dashed var(--excel-gray-300);
+        border-radius: var(--radius-md);
+        padding: 20px;
+        text-align: center;
+        margin: 16px 0;
+        transition: all var(--transition-smooth);
+      }
+
+      .image-placeholder:hover {
+        border-color: var(--excel-green);
+        background: rgba(33, 115, 70, 0.03);
+      }
+
+      .image-placeholder-icon {
+        font-size: 32px;
+        margin-bottom: 8px;
+        opacity: 0.5;
+      }
+
+      .image-placeholder-label {
+        font-size: 11px;
+        color: var(--text-muted);
+        font-weight: 600;
+        letter-spacing: 1px;
+        text-transform: uppercase;
+      }
+
+      .image-placeholder-hint {
+        font-size: 10px;
+        color: var(--excel-gray-400);
+        margin-top: 4px;
+      }
+
+      /* Instructions box */
+      .instructions {
+        background: rgba(33, 115, 70, 0.05);
+        border-left: 4px solid var(--excel-green);
+        border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+        padding: 14px 18px;
+        margin-top: 14px;
+      }
+
+      .instructions-title {
+        font-size: 11px;
+        font-weight: 700;
+        color: var(--excel-green);
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        margin-bottom: 6px;
+      }
+
+      .instructions-list {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+      }
+
+      .instructions-list li {
+        font-size: 13px;
+        color: var(--text-secondary);
+        padding: 3px 0;
+        padding-left: 20px;
+        position: relative;
+        line-height: 1.7;
+      }
+
+      .instructions-list li::before {
+        content: "•";
+        position: absolute;
+        left: 4px;
+        color: var(--excel-green);
+        font-weight: bold;
+      }
+
+      /* Question box */
+      .question-box {
+        background: rgba(33, 115, 70, 0.03);
+        border: 1px solid rgba(33, 115, 70, 0.15);
+        border-radius: var(--radius-md);
+        padding: 16px 20px;
+        margin-top: 14px;
+      }
+
+      .question-box p {
+        font-size: 13px;
+        color: var(--text-secondary);
+        margin-bottom: 6px;
+        font-weight: 500;
+      }
+
+      .question-box ol {
+        margin-left: 18px;
+        font-size: 13px;
+        color: var(--text-primary);
+      }
+
+      .question-box ol li {
+        margin-bottom: 4px;
+        line-height: 1.7;
+      }
+
+      /* Footer */
+      .footer {
+        border-top: 1px solid var(--excel-gray-200);
+        padding-top: 20px;
+        margin-top: 40px;
+        text-align: center;
+      }
+
+      .footer-info {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 12px;
+        flex-wrap: wrap;
+        margin-bottom: 8px;
+      }
+
+      .footer-item {
+        display: flex;
+        align-items: center;
+        gap: 6px;
+        font-size: 11px;
+        color: var(--text-muted);
+        letter-spacing: 0.3px;
+        font-weight: 500;
+      }
+
+      .footer-dot {
+        width: 3px;
+        height: 3px;
+        background: var(--excel-gray-300);
+        border-radius: 50%;
+      }
+
+      .footer-brand {
+        font-size: 10px;
+        color: var(--excel-gray-600);
+        letter-spacing: 1.5px;
+        text-transform: uppercase;
+        font-weight: 600;
+      }
+
+      /* Image placeholder */
+      .image-placeholder {
+        background: var(--excel-gray-100);
+        border: 2px dashed var(--excel-gray-300);
+        border-radius: var(--radius-md);
+        padding: 20px;
+        text-align: center;
+        margin: 16px 0;
+        transition: all var(--transition-smooth);
+      }
+
+      .image-placeholder:hover {
+        border-color: var(--excel-green);
+        background: rgba(33, 115, 70, 0.03);
+      }
+
+      /* Quando contém apenas elementos placeholder (sem img) */
+      .image-placeholder .image-placeholder-icon {
+        font-size: 32px;
+        margin-bottom: 8px;
+        opacity: 0.5;
+      }
+
+      .image-placeholder .image-placeholder-label {
+        font-size: 11px;
+        color: var(--text-muted);
+        font-weight: 600;
+        letter-spacing: 1px;
+        text-transform: uppercase;
+      }
+
+      .image-placeholder .image-placeholder-hint {
+        font-size: 10px;
+        color: var(--excel-gray-400);
+        margin-top: 4px;
+      }
+
+      /* Imagem real dentro do placeholder */
+      .image-placeholder img {
+        max-width: 100%;
+        height: auto;
+        display: block;
+        border-radius: var(--radius-sm);
+        margin: 0 auto;
+      }
+
+      /* Quando tem imagem, reduz o padding e muda a borda */
+      .image-placeholder:has(img) {
+        padding: 8px;
+        background: var(--bg-card);
+        border: 1px solid var(--border-light);
+      }
+
+      /* Esconde os textos placeholder quando há imagem */
+      .image-placeholder:has(img) .image-placeholder-icon,
+      .image-placeholder:has(img) .image-placeholder-label,
+      .image-placeholder:has(img) .image-placeholder-hint {
+        display: none;
+      }
+
+      /* Responsive */
+      @media (max-width: 768px) {
+        .page-header {
+          padding: 24px 20px 22px;
+        }
+
+        .page-header h1 {
+          font-size: 1.35rem;
+        }
+
+        .content-area {
+          padding: 20px 16px;
+        }
+
+        .activity {
+          padding: 16px;
+        }
+
+        .section-title {
+          font-size: 1.1rem;
+        }
+
+        .excel-table {
+          font-size: 11px;
+          min-width: 300px;
+        }
+
+        .excel-table thead th,
+        .excel-table tbody td {
+          padding: 7px 10px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <!-- Back button -->
+      <a href="../index.html" class="back-btn">← Voltar ao Hub</a>
+
+      <!-- Page Header -->
+      <header class="page-header">
+        <div class="page-header-content">
+          <div class="page-header-icon">📊</div>
+          <div class="page-header-text">
+            <span class="page-header-label">Atividades Práticas</span>
+            <h1>Excel Intermediário</h1>
+          </div>
+        </div>
+        <p class="page-header-subtitle">
+          Fórmulas avançadas, gráficos e planilha financeira
+        </p>
+        <div class="page-header-meta">
+          <span class="page-header-tag">📐 15 Atividades</span>
+          <span class="page-header-tag">📊 Gráficos</span>
+          <span class="page-header-tag">🧮 Fórmulas</span>
+          <span class="page-header-tag">💰 Mesada</span>
+        </div>
+      </header>
+
+      <!-- Content Area -->
+      <div class="content-area">
+        <!-- Info banner -->
+        <div class="info-banner">
+          <span class="info-banner-icon">📌</span>
+          <p class="info-banner-text">
+            <strong>Importante:</strong> Crie uma única planilha e utilize
+            <strong>abas separadas</strong> para cada atividade. Nomeie cada aba
+            conforme o número da atividade (ex: Ativ 1.1, Ativ 1.2, etc.).
+          </p>
+        </div>
+
+        <!-- ══════════════════════════════════ -->
+        <!-- SEÇÃO 1 — FÓRMULAS BÁSICAS      -->
+        <!-- ══════════════════════════════════ -->
+        <section class="section">
+          <div class="section-header">
+            <div class="section-number">1</div>
+            <div class="section-title-group">
+              <h2 class="section-title">📐 Fórmulas Básicas</h2>
+              <span class="section-subtitle">5 atividades</span>
+            </div>
+          </div>
+
+          <!-- Atividade 1.1 -->
+          <div class="activity">
+            <div class="activity-header">
+              <div class="activity-number">1</div>
+              <h3 class="activity-title">
+                Média das Notas
+                <span class="activity-tab">Aba: Ativ 1.1</span>
+              </h3>
+            </div>
+            <div class="activity-description">
+              <p>Em uma nova aba, digite a tabela abaixo:</p>
+            </div>
+
+            <div class="table-wrapper">
+              <table class="excel-table">
+                <thead>
+                  <tr>
+                    <th>A</th>
+                    <th>B</th>
+                    <th>C</th>
+                    <th>D</th>
+                    <th>E</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><strong>Aluno</strong></td>
+                    <td><strong>Nota 1</strong></td>
+                    <td><strong>Nota 2</strong></td>
+                    <td><strong>Nota 3</strong></td>
+                    <td><strong>Média</strong></td>
+                  </tr>
+                  <tr>
+                    <td>Ana</td>
+                    <td>8</td>
+                    <td>7</td>
+                    <td>9</td>
+                    <td class="calc-cell">Calcular</td>
+                  </tr>
+                  <tr>
+                    <td>João</td>
+                    <td>6</td>
+                    <td>8</td>
+                    <td>7</td>
+                    <td class="calc-cell">Calcular</td>
+                  </tr>
+                  <tr>
+                    <td>Maria</td>
+                    <td>10</td>
+                    <td>9</td>
+                    <td>8</td>
+                    <td class="calc-cell">Calcular</td>
+                  </tr>
+                  <tr>
+                    <td>Pedro</td>
+                    <td>5</td>
+                    <td>6</td>
+                    <td>7</td>
+                    <td class="calc-cell">Calcular</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
+            <div class="image-placeholder">
+              <div class="image-placeholder-icon">🖼️</div>
+              <div class="image-placeholder-label">
+                Inserir imagem da atividade 1.1
+              </div>
+              <div class="image-placeholder-hint">
+                Print com a coluna Média calculada
+              </div>
+            </div>
+
+            <div class="instructions">
+              <div class="instructions-title">O que fazer</div>
+              <ul class="instructions-list">
+                <li>Crie uma coluna chamada <strong>Média</strong></li>
+                <li>
+                  Utilize a função <strong>MÉDIA()</strong> para calcular a
+                  média de cada aluno
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- Atividade 1.2 -->
+          <div class="activity">
+            <div class="activity-header">
+              <div class="activity-number">2</div>
+              <h3 class="activity-title">
+                Maior e Menor Nota
+                <span class="activity-tab">Aba: Ativ 1.2</span>
+              </h3>
+            </div>
+            <div class="activity-description">
+              <p>
+                Em uma nova aba, copie a tabela da atividade anterior e calcule:
+              </p>
+            </div>
+
+            <div class="table-wrapper">
+              <table class="excel-table">
+                <thead>
+                  <tr>
+                    <th>A</th>
+                    <th>B</th>
+                    <th>C</th>
+                    <th>D</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><strong>Aluno</strong></td>
+                    <td><strong>Nota 1</strong></td>
+                    <td><strong>Nota 2</strong></td>
+                    <td><strong>Nota 3</strong></td>
+                  </tr>
+                  <tr>
+                    <td>Ana</td>
+                    <td>8</td>
+                    <td>7</td>
+                    <td>9</td>
+                  </tr>
+                  <tr>
+                    <td>João</td>
+                    <td>6</td>
+                    <td>8</td>
+                    <td>7</td>
+                  </tr>
+                  <tr>
+                    <td>Maria</td>
+                    <td>10</td>
+                    <td>9</td>
+                    <td>8</td>
+                  </tr>
+                  <tr>
+                    <td>Pedro</td>
+                    <td>5</td>
+                    <td>6</td>
+                    <td>7</td>
+                  </tr>
+                  <tr>
+                    <td><strong>Maior Nota</strong></td>
+                    <td colspan="3" class="calc-cell">Calcular com MÁXIMO()</td>
+                  </tr>
+                  <tr>
+                    <td><strong>Menor Nota</strong></td>
+                    <td colspan="3" class="calc-cell">Calcular com MÍNIMO()</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
+            <div class="image-placeholder">
+              <div class="image-placeholder-icon">🖼️</div>
+              <div class="image-placeholder-label">
+                Inserir imagem da atividade 1.2
+              </div>
+              <div class="image-placeholder-hint">
+                Print com MÁXIMO e MÍNIMO calculados
+              </div>
+            </div>
+
+            <div class="instructions">
+              <div class="instructions-title">O que fazer</div>
+              <ul class="instructions-list">
+                <li>
+                  A maior nota da turma utilizando <strong>MÁXIMO()</strong>
+                </li>
+                <li>
+                  A menor nota da turma utilizando <strong>MÍNIMO()</strong>
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- Atividade 1.3 -->
+          <div class="activity">
+            <div class="activity-header">
+              <div class="activity-number">3</div>
+              <h3 class="activity-title">
+                Soma das Notas
+                <span class="activity-tab">Aba: Ativ 1.3</span>
+              </h3>
+            </div>
+            <div class="activity-description">
+              <p>
+                Em uma nova aba, digite a tabela e calcule o total de pontos:
+              </p>
+            </div>
+
+            <div class="table-wrapper">
+              <table class="excel-table">
+                <thead>
+                  <tr>
+                    <th>A</th>
+                    <th>B</th>
+                    <th>C</th>
+                    <th>D</th>
+                    <th>E</th>
+                    <th>F</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><strong>Aluno</strong></td>
+                    <td><strong>Nota 1</strong></td>
+                    <td><strong>Nota 2</strong></td>
+                    <td><strong>Nota 3</strong></td>
+                    <td><strong>Nota 4</strong></td>
+                    <td><strong>Total</strong></td>
+                  </tr>
+                  <tr>
+                    <td>Lucas</td>
+                    <td>7</td>
+                    <td>8</td>
+                    <td>9</td>
+                    <td>10</td>
+                    <td class="calc-cell">Calcular</td>
+                  </tr>
+                  <tr>
+                    <td>Sofia</td>
+                    <td>9</td>
+                    <td>9</td>
+                    <td>8</td>
+                    <td>10</td>
+                    <td class="calc-cell">Calcular</td>
+                  </tr>
+                  <tr>
+                    <td>Miguel</td>
+                    <td>6</td>
+                    <td>7</td>
+                    <td>8</td>
+                    <td>6</td>
+                    <td class="calc-cell">Calcular</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
+            <div class="image-placeholder">
+              <div class="image-placeholder-icon">🖼️</div>
+              <div class="image-placeholder-label">
+                Inserir imagem da atividade 1.3
+              </div>
+              <div class="image-placeholder-hint">
+                Print com a coluna Total preenchida
+              </div>
+            </div>
+
+            <div class="instructions">
+              <div class="instructions-title">O que fazer</div>
+              <ul class="instructions-list">
+                <li>Crie uma coluna chamada <strong>Total</strong></li>
+                <li>
+                  Utilize a função <strong>SOMA()</strong> para calcular o total
+                  de pontos de cada aluno
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- Atividade 1.4 -->
+          <div class="activity">
+            <div class="activity-header">
+              <div class="activity-number">4</div>
+              <h3 class="activity-title">
+                Desempenho da Turma
+                <span class="activity-tab">Aba: Ativ 1.4</span>
+              </h3>
+            </div>
+            <div class="activity-description">
+              <p>Em uma nova aba, digite a tabela e faça os cálculos:</p>
+            </div>
+
+            <div class="table-wrapper">
+              <table class="excel-table">
+                <thead>
+                  <tr>
+                    <th>A</th>
+                    <th>B</th>
+                    <th>C</th>
+                    <th>D</th>
+                    <th>E</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><strong>Aluno</strong></td>
+                    <td><strong>Matemática</strong></td>
+                    <td><strong>Português</strong></td>
+                    <td><strong>Ciências</strong></td>
+                    <td><strong>Média</strong></td>
+                  </tr>
+                  <tr>
+                    <td>Ana</td>
+                    <td>9</td>
+                    <td>8</td>
+                    <td>10</td>
+                    <td class="calc-cell">Calcular</td>
+                  </tr>
+                  <tr>
+                    <td>João</td>
+                    <td>7</td>
+                    <td>6</td>
+                    <td>8</td>
+                    <td class="calc-cell">Calcular</td>
+                  </tr>
+                  <tr>
+                    <td>Pedro</td>
+                    <td>8</td>
+                    <td>9</td>
+                    <td>7</td>
+                    <td class="calc-cell">Calcular</td>
+                  </tr>
+                  <tr>
+                    <td>Maria</td>
+                    <td>10</td>
+                    <td>10</td>
+                    <td>9</td>
+                    <td class="calc-cell">Calcular</td>
+                  </tr>
+                  <tr>
+                    <td>Lucas</td>
+                    <td>6</td>
+                    <td>7</td>
+                    <td>8</td>
+                    <td class="calc-cell">Calcular</td>
+                  </tr>
+                  <tr>
+                    <td><strong>Maior Média</strong></td>
+                    <td colspan="4" class="calc-cell">Calcular com MÁXIMO()</td>
+                  </tr>
+                  <tr>
+                    <td><strong>Menor Média</strong></td>
+                    <td colspan="4" class="calc-cell">Calcular com MÍNIMO()</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
+            <div class="image-placeholder">
+              <div class="image-placeholder-icon">🖼️</div>
+              <div class="image-placeholder-label">
+                Inserir imagem da atividade 1.4
+              </div>
+              <div class="image-placeholder-hint">
+                Print com médias, maior e menor
+              </div>
+            </div>
+
+            <div class="instructions">
+              <div class="instructions-title">O que fazer</div>
+              <ul class="instructions-list">
+                <li>Média de cada aluno utilizando <strong>MÉDIA()</strong></li>
+                <li>Maior média utilizando <strong>MÁXIMO()</strong></li>
+                <li>Menor média utilizando <strong>MÍNIMO()</strong></li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- Atividade 1.5 -->
+          <div class="activity">
+            <div class="activity-header">
+              <div class="activity-number">5</div>
+              <h3 class="activity-title">
+                Campeonato de Jogos
+                <span class="activity-tab">Aba: Ativ 1.5</span>
+              </h3>
+            </div>
+            <div class="activity-description">
+              <p>Em uma nova aba, digite a tabela e faça todos os cálculos:</p>
+            </div>
+
+            <div class="table-wrapper">
+              <table class="excel-table">
+                <thead>
+                  <tr>
+                    <th>A</th>
+                    <th>B</th>
+                    <th>C</th>
+                    <th>D</th>
+                    <th>E</th>
+                    <th>F</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><strong>Jogador</strong></td>
+                    <td><strong>Rodada 1</strong></td>
+                    <td><strong>Rodada 2</strong></td>
+                    <td><strong>Rodada 3</strong></td>
+                    <td><strong>Total</strong></td>
+                    <td><strong>Média</strong></td>
+                  </tr>
+                  <tr>
+                    <td>Ana</td>
+                    <td>15</td>
+                    <td>18</td>
+                    <td>20</td>
+                    <td class="calc-cell">Calcular</td>
+                    <td class="calc-cell">Calcular</td>
+                  </tr>
+                  <tr>
+                    <td>João</td>
+                    <td>12</td>
+                    <td>14</td>
+                    <td>19</td>
+                    <td class="calc-cell">Calcular</td>
+                    <td class="calc-cell">Calcular</td>
+                  </tr>
+                  <tr>
+                    <td>Maria</td>
+                    <td>20</td>
+                    <td>18</td>
+                    <td>22</td>
+                    <td class="calc-cell">Calcular</td>
+                    <td class="calc-cell">Calcular</td>
+                  </tr>
+                  <tr>
+                    <td>Pedro</td>
+                    <td>10</td>
+                    <td>15</td>
+                    <td>16</td>
+                    <td class="calc-cell">Calcular</td>
+                    <td class="calc-cell">Calcular</td>
+                  </tr>
+                  <tr>
+                    <td><strong>Maior Média</strong></td>
+                    <td colspan="5" class="calc-cell">Calcular com MÁXIMO()</td>
+                  </tr>
+                  <tr>
+                    <td><strong>Menor Média</strong></td>
+                    <td colspan="5" class="calc-cell">Calcular com MÍNIMO()</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
+            <div class="image-placeholder">
+              <div class="image-placeholder-icon">🖼️</div>
+              <div class="image-placeholder-label">
+                Inserir imagem da atividade 1.5
+              </div>
+              <div class="image-placeholder-hint">
+                Print com todos os cálculos
+              </div>
+            </div>
+
+            <div class="instructions">
+              <div class="instructions-title">O que fazer</div>
+              <ul class="instructions-list">
+                <li>
+                  Calcule o total de pontos de cada jogador utilizando
+                  <strong>SOMA()</strong>
+                </li>
+                <li>
+                  Calcule a média de pontos utilizando <strong>MÉDIA()</strong>
+                </li>
+                <li>
+                  Descubra a maior e a menor média utilizando
+                  <strong>MÁXIMO()</strong> e <strong>MÍNIMO()</strong>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </section>
+
+        <!-- ══════════════════════════════════ -->
+        <!-- SEÇÃO 2 — GRÁFICOS BÁSICOS      -->
+        <!-- ══════════════════════════════════ -->
+        <section class="section">
+          <div class="section-header">
+            <div class="section-number">2</div>
+            <div class="section-title-group">
+              <h2 class="section-title">📊 Gráficos Básicos</h2>
+              <span class="section-subtitle">5 atividades</span>
+            </div>
+          </div>
+
+          <!-- Atividade 2.1 -->
+          <div class="activity">
+            <div class="activity-header">
+              <div class="activity-number">1</div>
+              <h3 class="activity-title">
+                Vendas de Sorvetes
+                <span class="activity-tab">Aba: Ativ 2.1</span>
+              </h3>
+            </div>
+            <div class="activity-description">
+              <p>Em uma nova aba, digite a tabela e crie um gráfico:</p>
+            </div>
+
+            <div class="table-wrapper">
+              <table class="excel-table">
+                <thead>
+                  <tr>
+                    <th>A</th>
+                    <th>B</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><strong>Sabor</strong></td>
+                    <td><strong>Quantidade</strong></td>
+                  </tr>
+                  <tr>
+                    <td>Chocolate</td>
+                    <td>18</td>
+                  </tr>
+                  <tr>
+                    <td>Morango</td>
+                    <td>25</td>
+                  </tr>
+                  <tr>
+                    <td>Baunilha</td>
+                    <td>15</td>
+                  </tr>
+                  <tr>
+                    <td>Limão</td>
+                    <td>12</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
+            <div class="image-placeholder">
+              <div class="image-placeholder-icon">🖼️</div>
+              <div class="image-placeholder-label">
+                Inserir imagem da atividade 2.1
+              </div>
+              <div class="image-placeholder-hint">
+                Print do gráfico de colunas com título
+              </div>
+            </div>
+
+            <div class="instructions">
+              <div class="instructions-title">O que fazer</div>
+              <ul class="instructions-list">
+                <li>Crie um <strong>gráfico de colunas</strong></li>
+                <li>Adicione um <strong>título</strong> ao gráfico</li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- Atividade 2.2 -->
+          <div class="activity">
+            <div class="activity-header">
+              <div class="activity-number">2</div>
+              <h3 class="activity-title">
+                Animais Preferidos
+                <span class="activity-tab">Aba: Ativ 2.2</span>
+              </h3>
+            </div>
+            <div class="activity-description">
+              <p>Em uma nova aba, digite a tabela e crie um gráfico:</p>
+            </div>
+
+            <div class="table-wrapper">
+              <table class="excel-table">
+                <thead>
+                  <tr>
+                    <th>A</th>
+                    <th>B</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><strong>Animal</strong></td>
+                    <td><strong>Votos</strong></td>
+                  </tr>
+                  <tr>
+                    <td>Cachorro</td>
+                    <td>18</td>
+                  </tr>
+                  <tr>
+                    <td>Gato</td>
+                    <td>12</td>
+                  </tr>
+                  <tr>
+                    <td>Coelho</td>
+                    <td>8</td>
+                  </tr>
+                  <tr>
+                    <td>Peixe</td>
+                    <td>5</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
+            <div class="image-placeholder">
+              <div class="image-placeholder-icon">🖼️</div>
+              <div class="image-placeholder-label">
+                Inserir imagem da atividade 2.2
+              </div>
+              <div class="image-placeholder-hint">
+                Print do gráfico de pizza personalizado
+              </div>
+            </div>
+
+            <div class="instructions">
+              <div class="instructions-title">O que fazer</div>
+              <ul class="instructions-list">
+                <li>Crie um <strong>gráfico de pizza</strong></li>
+                <li>Personalize as <strong>cores das fatias</strong></li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- Atividade 2.3 -->
+          <div class="activity">
+            <div class="activity-header">
+              <div class="activity-number">3</div>
+              <h3 class="activity-title">
+                Livros Lidos
+                <span class="activity-tab">Aba: Ativ 2.3</span>
+              </h3>
+            </div>
+            <div class="activity-description">
+              <p>Em uma nova aba, digite a tabela e crie um gráfico:</p>
+            </div>
+
+            <div class="table-wrapper">
+              <table class="excel-table">
+                <thead>
+                  <tr>
+                    <th>A</th>
+                    <th>B</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><strong>Mês</strong></td>
+                    <td><strong>Livros</strong></td>
+                  </tr>
+                  <tr>
+                    <td>Janeiro</td>
+                    <td>2</td>
+                  </tr>
+                  <tr>
+                    <td>Fevereiro</td>
+                    <td>3</td>
+                  </tr>
+                  <tr>
+                    <td>Março</td>
+                    <td>5</td>
+                  </tr>
+                  <tr>
+                    <td>Abril</td>
+                    <td>4</td>
+                  </tr>
+                  <tr>
+                    <td>Maio</td>
+                    <td>6</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
+            <div class="image-placeholder">
+              <div class="image-placeholder-icon">🖼️</div>
+              <div class="image-placeholder-label">
+                Inserir imagem da atividade 2.3
+              </div>
+              <div class="image-placeholder-hint">
+                Print do gráfico com título alterado
+              </div>
+            </div>
+
+            <div class="instructions">
+              <div class="instructions-title">O que fazer</div>
+              <ul class="instructions-list">
+                <li>Crie um <strong>gráfico de colunas</strong></li>
+                <li>
+                  Altere o título para <strong>Livros Lidos no Ano</strong>
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- Atividade 2.4 -->
+          <div class="activity">
+            <div class="activity-header">
+              <div class="activity-number">4</div>
+              <h3 class="activity-title">
+                Frutas Preferidas
+                <span class="activity-tab">Aba: Ativ 2.4</span>
+              </h3>
+            </div>
+            <div class="activity-description">
+              <p>Em uma nova aba, digite a tabela e crie um gráfico:</p>
+            </div>
+
+            <div class="table-wrapper">
+              <table class="excel-table">
+                <thead>
+                  <tr>
+                    <th>A</th>
+                    <th>B</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><strong>Fruta</strong></td>
+                    <td><strong>Quantidade</strong></td>
+                  </tr>
+                  <tr>
+                    <td>Maçã</td>
+                    <td>14</td>
+                  </tr>
+                  <tr>
+                    <td>Banana</td>
+                    <td>10</td>
+                  </tr>
+                  <tr>
+                    <td>Uva</td>
+                    <td>8</td>
+                  </tr>
+                  <tr>
+                    <td>Laranja</td>
+                    <td>12</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
+            <div class="image-placeholder">
+              <div class="image-placeholder-icon">🖼️</div>
+              <div class="image-placeholder-label">
+                Inserir imagem da atividade 2.4
+              </div>
+              <div class="image-placeholder-hint">
+                Print do gráfico de pizza com legenda
+              </div>
+            </div>
+
+            <div class="instructions">
+              <div class="instructions-title">O que fazer</div>
+              <ul class="instructions-list">
+                <li>Crie um <strong>gráfico de pizza</strong></li>
+                <li>Exiba a <strong>legenda</strong></li>
+                <li>Altere o <strong>título</strong> do gráfico</li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- Atividade 2.5 -->
+          <div class="activity">
+            <div class="activity-header">
+              <div class="activity-number">5</div>
+              <h3 class="activity-title">
+                Brinquedos Favoritos
+                <span class="activity-tab">Aba: Ativ 2.5</span>
+              </h3>
+            </div>
+            <div class="activity-description">
+              <p>Em uma nova aba, digite a tabela e crie um gráfico:</p>
+            </div>
+
+            <div class="table-wrapper">
+              <table class="excel-table">
+                <thead>
+                  <tr>
+                    <th>A</th>
+                    <th>B</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><strong>Brinquedo</strong></td>
+                    <td><strong>Votos</strong></td>
+                  </tr>
+                  <tr>
+                    <td>Bola</td>
+                    <td>18</td>
+                  </tr>
+                  <tr>
+                    <td>Boneca</td>
+                    <td>12</td>
+                  </tr>
+                  <tr>
+                    <td>Carrinho</td>
+                    <td>15</td>
+                  </tr>
+                  <tr>
+                    <td>Lego</td>
+                    <td>20</td>
+                  </tr>
+                  <tr>
+                    <td>Quebra-cabeça</td>
+                    <td>10</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
+            <div class="image-placeholder">
+              <div class="image-placeholder-icon">🖼️</div>
+              <div class="image-placeholder-label">
+                Inserir imagem da atividade 2.5
+              </div>
+              <div class="image-placeholder-hint">
+                Print do gráfico com valores e cores
+              </div>
+            </div>
+
+            <div class="instructions">
+              <div class="instructions-title">O que fazer</div>
+              <ul class="instructions-list">
+                <li>Crie um <strong>gráfico de colunas</strong></li>
+                <li>Modifique as <strong>cores das colunas</strong></li>
+                <li>Adicione um <strong>título</strong></li>
+                <li>Insira os <strong>valores sobre cada coluna</strong></li>
+              </ul>
+            </div>
+          </div>
+        </section>
+
+        <!-- ══════════════════════════════════ -->
+        <!-- SEÇÃO 3 — PLANILHA DA MESADA     -->
+        <!-- ══════════════════════════════════ -->
+        <section class="section">
+          <div class="section-header">
+            <div class="section-number">3</div>
+            <div class="section-title-group">
+              <h2 class="section-title">💰 Planilha da Mesada</h2>
+              <span class="section-subtitle">5 atividades</span>
+            </div>
+          </div>
+
+          <!-- Atividade 3.1 -->
+          <div class="activity">
+            <div class="activity-header">
+              <div class="activity-number">1</div>
+              <h3 class="activity-title">
+                Organizando a Mesada
+                <span class="activity-tab">Aba: Ativ 3.1</span>
+              </h3>
+            </div>
+            <div class="activity-description">
+              <p>Em uma nova aba, digite a tabela e calcule o saldo:</p>
+            </div>
+
+            <div class="table-wrapper">
+              <table class="excel-table">
+                <thead>
+                  <tr>
+                    <th>A</th>
+                    <th>B</th>
+                    <th>C</th>
+                    <th>D</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><strong>Mês</strong></td>
+                    <td><strong>Ganhos</strong></td>
+                    <td><strong>Gastos</strong></td>
+                    <td><strong>Saldo</strong></td>
+                  </tr>
+                  <tr>
+                    <td>Janeiro</td>
+                    <td>R$ 100,00</td>
+                    <td>R$ 60,00</td>
+                    <td class="calc-cell">Calcular</td>
+                  </tr>
+                  <tr>
+                    <td>Fevereiro</td>
+                    <td>R$ 120,00</td>
+                    <td>R$ 70,00</td>
+                    <td class="calc-cell">Calcular</td>
+                  </tr>
+                  <tr>
+                    <td>Março</td>
+                    <td>R$ 90,00</td>
+                    <td>R$ 40,00</td>
+                    <td class="calc-cell">Calcular</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
+            <div class="image-placeholder">
+              <div class="image-placeholder-icon">🖼️</div>
+              <div class="image-placeholder-label">
+                Inserir imagem da atividade 3.1
+              </div>
+              <div class="image-placeholder-hint">
+                Print com a coluna Saldo calculada
+              </div>
+            </div>
+
+            <div class="instructions">
+              <div class="instructions-title">O que fazer</div>
+              <ul class="instructions-list">
+                <li>Crie uma coluna chamada <strong>Saldo</strong></li>
+                <li>Fórmula: <strong>Saldo = Ganhos − Gastos</strong></li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- Atividade 3.2 -->
+          <div class="activity">
+            <div class="activity-header">
+              <div class="activity-number">2</div>
+              <h3 class="activity-title">
+                Total Recebido
+                <span class="activity-tab">Aba: Ativ 3.2</span>
+              </h3>
+            </div>
+            <div class="activity-description">
+              <p>
+                Em uma nova aba, copie a planilha anterior e calcule os totais:
+              </p>
+            </div>
+
+            <div class="table-wrapper">
+              <table class="excel-table">
+                <thead>
+                  <tr>
+                    <th>A</th>
+                    <th>B</th>
+                    <th>C</th>
+                    <th>D</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><strong>Mês</strong></td>
+                    <td><strong>Ganhos</strong></td>
+                    <td><strong>Gastos</strong></td>
+                    <td><strong>Saldo</strong></td>
+                  </tr>
+                  <tr>
+                    <td>Janeiro</td>
+                    <td>R$ 100,00</td>
+                    <td>R$ 60,00</td>
+                    <td>R$ 40,00</td>
+                  </tr>
+                  <tr>
+                    <td>Fevereiro</td>
+                    <td>R$ 120,00</td>
+                    <td>R$ 70,00</td>
+                    <td>R$ 50,00</td>
+                  </tr>
+                  <tr>
+                    <td>Março</td>
+                    <td>R$ 90,00</td>
+                    <td>R$ 40,00</td>
+                    <td>R$ 50,00</td>
+                  </tr>
+                  <tr>
+                    <td><strong>TOTAL</strong></td>
+                    <td class="calc-cell">Calcular com SOMA()</td>
+                    <td class="calc-cell">Calcular com SOMA()</td>
+                    <td></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
+            <div class="image-placeholder">
+              <div class="image-placeholder-icon">🖼️</div>
+              <div class="image-placeholder-label">
+                Inserir imagem da atividade 3.2
+              </div>
+              <div class="image-placeholder-hint">
+                Print com totais calculados
+              </div>
+            </div>
+
+            <div class="instructions">
+              <div class="instructions-title">O que fazer</div>
+              <ul class="instructions-list">
+                <li>Total dos ganhos utilizando <strong>SOMA()</strong></li>
+                <li>Total dos gastos utilizando <strong>SOMA()</strong></li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- Atividade 3.3 -->
+          <div class="activity">
+            <div class="activity-header">
+              <div class="activity-number">3</div>
+              <h3 class="activity-title">
+                Média da Mesada
+                <span class="activity-tab">Aba: Ativ 3.3</span>
+              </h3>
+            </div>
+            <div class="activity-description">
+              <p>Em uma nova aba, copie a planilha e calcule as médias:</p>
+            </div>
+
+            <div class="table-wrapper">
+              <table class="excel-table">
+                <thead>
+                  <tr>
+                    <th>A</th>
+                    <th>B</th>
+                    <th>C</th>
+                    <th>D</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><strong>Mês</strong></td>
+                    <td><strong>Ganhos</strong></td>
+                    <td><strong>Gastos</strong></td>
+                    <td><strong>Saldo</strong></td>
+                  </tr>
+                  <tr>
+                    <td>Janeiro</td>
+                    <td>R$ 100,00</td>
+                    <td>R$ 60,00</td>
+                    <td>R$ 40,00</td>
+                  </tr>
+                  <tr>
+                    <td>Fevereiro</td>
+                    <td>R$ 120,00</td>
+                    <td>R$ 70,00</td>
+                    <td>R$ 50,00</td>
+                  </tr>
+                  <tr>
+                    <td>Março</td>
+                    <td>R$ 90,00</td>
+                    <td>R$ 40,00</td>
+                    <td>R$ 50,00</td>
+                  </tr>
+                  <tr>
+                    <td><strong>MÉDIA</strong></td>
+                    <td class="calc-cell">Calcular com MÉDIA()</td>
+                    <td class="calc-cell">Calcular com MÉDIA()</td>
+                    <td></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
+            <div class="image-placeholder">
+              <div class="image-placeholder-icon">🖼️</div>
+              <div class="image-placeholder-label">
+                Inserir imagem da atividade 3.3
+              </div>
+              <div class="image-placeholder-hint">
+                Print com as médias calculadas
+              </div>
+            </div>
+
+            <div class="instructions">
+              <div class="instructions-title">O que fazer</div>
+              <ul class="instructions-list">
+                <li>Média dos ganhos utilizando <strong>MÉDIA()</strong></li>
+                <li>Média dos gastos utilizando <strong>MÉDIA()</strong></li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- Atividade 3.4 -->
+          <div class="activity">
+            <div class="activity-header">
+              <div class="activity-number">4</div>
+              <h3 class="activity-title">
+                Gráfico de Pizza
+                <span class="activity-tab">Aba: Ativ 3.4</span>
+              </h3>
+            </div>
+            <div class="activity-description">
+              <p>
+                Em uma nova aba, utilize os dados da coluna Gastos e crie um
+                gráfico:
+              </p>
+            </div>
+
+            <div class="table-wrapper">
+              <table class="excel-table">
+                <thead>
+                  <tr>
+                    <th>A</th>
+                    <th>B</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><strong>Mês</strong></td>
+                    <td><strong>Gastos</strong></td>
+                  </tr>
+                  <tr>
+                    <td>Janeiro</td>
+                    <td>R$ 60,00</td>
+                  </tr>
+                  <tr>
+                    <td>Fevereiro</td>
+                    <td>R$ 70,00</td>
+                  </tr>
+                  <tr>
+                    <td>Março</td>
+                    <td>R$ 40,00</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
+            <div class="image-placeholder">
+              <div class="image-placeholder-icon">🖼️</div>
+              <div class="image-placeholder-label">
+                Inserir imagem da atividade 3.4
+              </div>
+              <div class="image-placeholder-hint">
+                Print do gráfico de pizza dos gastos
+              </div>
+            </div>
+
+            <div class="instructions">
+              <div class="instructions-title">O que fazer</div>
+              <ul class="instructions-list">
+                <li>
+                  Crie um <strong>gráfico de pizza</strong> mostrando quanto foi
+                  gasto em cada mês
+                </li>
+                <li>Adicione um <strong>título</strong> ao gráfico</li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- Atividade 3.5 -->
+          <div class="activity">
+            <div class="activity-header">
+              <div class="activity-number">5</div>
+              <h3 class="activity-title">
+                Resumo Financeiro
+                <span class="activity-tab">Aba: Ativ 3.5</span>
+              </h3>
+            </div>
+            <div class="activity-description">
+              <p>
+                Em uma nova aba, digite a tabela completa e faça todos os
+                cálculos:
+              </p>
+            </div>
+
+            <div class="table-wrapper">
+              <table class="excel-table">
+                <thead>
+                  <tr>
+                    <th>A</th>
+                    <th>B</th>
+                    <th>C</th>
+                    <th>D</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><strong>Mês</strong></td>
+                    <td><strong>Ganhos</strong></td>
+                    <td><strong>Gastos</strong></td>
+                    <td><strong>Saldo</strong></td>
+                  </tr>
+                  <tr>
+                    <td>Janeiro</td>
+                    <td>R$ 150,00</td>
+                    <td>R$ 90,00</td>
+                    <td class="calc-cell">Calcular</td>
+                  </tr>
+                  <tr>
+                    <td>Fevereiro</td>
+                    <td>R$ 120,00</td>
+                    <td>R$ 60,00</td>
+                    <td class="calc-cell">Calcular</td>
+                  </tr>
+                  <tr>
+                    <td>Março</td>
+                    <td>R$ 180,00</td>
+                    <td>R$ 100,00</td>
+                    <td class="calc-cell">Calcular</td>
+                  </tr>
+                  <tr>
+                    <td>Abril</td>
+                    <td>R$ 140,00</td>
+                    <td>R$ 70,00</td>
+                    <td class="calc-cell">Calcular</td>
+                  </tr>
+                  <tr>
+                    <td>Maio</td>
+                    <td>R$ 160,00</td>
+                    <td>R$ 110,00</td>
+                    <td class="calc-cell">Calcular</td>
+                  </tr>
+                  <tr>
+                    <td><strong>TOTAL</strong></td>
+                    <td class="calc-cell">Calcular com SOMA()</td>
+                    <td class="calc-cell">Calcular com SOMA()</td>
+                    <td></td>
+                  </tr>
+                  <tr>
+                    <td><strong>MÉDIA</strong></td>
+                    <td class="calc-cell">Calcular com MÉDIA()</td>
+                    <td class="calc-cell">Calcular com MÉDIA()</td>
+                    <td></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
+            <div class="image-placeholder">
+              <div class="image-placeholder-icon">🖼️</div>
+              <div class="image-placeholder-label">
+                Inserir imagem da atividade 3.5 — Parte 1
+              </div>
+              <div class="image-placeholder-hint">
+                Print da planilha com todos os cálculos
+              </div>
+            </div>
+
+            <div class="image-placeholder">
+              <div class="image-placeholder-icon">🖼️</div>
+              <div class="image-placeholder-label">
+                Inserir imagem da atividade 3.5 — Parte 2
+              </div>
+              <div class="image-placeholder-hint">
+                Print do gráfico de pizza dos gastos por mês
+              </div>
+            </div>
+
+            <div class="instructions">
+              <div class="instructions-title">O que fazer</div>
+              <ul class="instructions-list">
+                <li>
+                  Calcule o <strong>saldo</strong> de cada mês (Ganhos − Gastos)
+                </li>
+                <li>
+                  Calcule o <strong>total de ganhos</strong> utilizando SOMA()
+                </li>
+                <li>
+                  Calcule o <strong>total de gastos</strong> utilizando SOMA()
+                </li>
+                <li>
+                  Calcule a <strong>média dos ganhos</strong> utilizando MÉDIA()
+                </li>
+                <li>
+                  Crie um <strong>gráfico de pizza</strong> mostrando os gastos
+                  por mês
+                </li>
+              </ul>
+            </div>
+          </div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="footer">
+          <div class="footer-info">
+            <span class="footer-item">📊 15 Atividades Práticas</span>
+            <span class="footer-dot"></span>
+            <span class="footer-item">📐 Fórmulas</span>
+            <span class="footer-dot"></span>
+            <span class="footer-item">📊 Gráficos</span>
+            <span class="footer-dot"></span>
+            <span class="footer-item">💰 Mesada</span>
+          </div>
+          <p class="footer-brand">Divisão de Tecnologia Educacional</p>
+        </footer>
+      </div>
+    </div>
+  </body>
+</html>
