@@ -394,6 +394,43 @@
         opacity: 1;
         transform: translateX(-50%) translateY(0);
       }
+
+      .card--disabled {
+        background: var(--excel-gray-100);
+        border: 1px solid var(--excel-gray-200);
+        color: var(--excel-gray-400);
+        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
+        cursor: not-allowed;
+        opacity: 0.65;
+        pointer-events: none;
+        user-select: none;
+      }
+
+      .card--disabled::before {
+        background: var(--excel-gray-300) !important;
+      }
+
+      .card--disabled .card-icon {
+        filter: grayscale(100%);
+        opacity: 0.5;
+      }
+
+      .card--disabled .card-title {
+        color: var(--excel-gray-500);
+      }
+
+      .card--disabled .card-subtitle {
+        color: var(--excel-gray-400);
+      }
+
+      .card--disabled .card-badge {
+        color: var(--excel-gray-500);
+        background: var(--excel-gray-200);
+      }
+
+      .card--disabled .card-tooltip {
+        display: none;
+      }
     </style>
   </head>
   <body>
@@ -440,7 +477,7 @@
           <!-- Card 2: Desafio -->
           <a
             href="./pages/sco_02.html"
-            class="card card--green-light"
+            class="card card--green-light card--disabled"
             title="Acessar atividade prática"
           >
             <span class="card-tooltip">Atividade</span>
@@ -454,7 +491,7 @@
           <a
             href="./pages/prova.html"
             rel="noopener noreferrer"
-            class="card card--dark"
+            class="card card--dark card--disabled"
             title="Acessar planilha de recursos"
           >
             <span class="card-tooltip">Recursos</span>
