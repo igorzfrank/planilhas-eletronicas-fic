@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Prova Prática Excel | Hub Professor</title>
+    <title>Prova Prática Excel · Planilhas Eletrônicas | Hub Professor</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -28,7 +28,6 @@
         --excel-gray-800: #404040;
         --excel-gray-900: #2d2d2d;
         --excel-dark: #1a1a1a;
-
         --bg-primary: #f3f3f3;
         --bg-card: #ffffff;
         --bg-header: #217346;
@@ -87,11 +86,10 @@
       .container {
         position: relative;
         z-index: 1;
-        max-width: 960px;
+        max-width: 980px;
         margin: 0 auto;
       }
 
-      /* Back button */
       .back-btn {
         display: inline-flex;
         align-items: center;
@@ -116,13 +114,31 @@
         box-shadow: var(--shadow-hover);
       }
 
-      /* Header */
       .page-header {
-        background: var(--bg-header);
+        background: linear-gradient(
+          135deg,
+          #18522f 0%,
+          #217346 40%,
+          #1a5c32 100%
+        );
         border-radius: var(--radius-lg) var(--radius-lg) 0 0;
-        padding: 36px 32px 32px;
+        padding: 40px 36px 36px;
         margin-bottom: 0;
-        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
+        position: relative;
+        overflow: hidden;
+      }
+
+      .page-header::after {
+        content: "";
+        position: absolute;
+        top: -60px;
+        right: -60px;
+        width: 220px;
+        height: 220px;
+        background: rgba(255, 255, 255, 0.03);
+        border-radius: 50%;
+        pointer-events: none;
       }
 
       .page-header-content {
@@ -130,19 +146,22 @@
         align-items: center;
         gap: 20px;
         margin-bottom: 12px;
+        position: relative;
+        z-index: 1;
       }
 
       .page-header-icon {
-        width: 56px;
-        height: 56px;
-        background: rgba(255, 255, 255, 0.15);
-        border-radius: 12px;
+        width: 60px;
+        height: 60px;
+        background: rgba(255, 255, 255, 0.12);
+        border-radius: 14px;
         display: flex;
         align-items: center;
         justify-content: center;
-        font-size: 28px;
+        font-size: 30px;
         backdrop-filter: blur(10px);
         flex-shrink: 0;
+        border: 1px solid rgba(255, 255, 255, 0.15);
       }
 
       .page-header-text {
@@ -152,60 +171,63 @@
       .page-header-label {
         font-size: 10px;
         letter-spacing: 3px;
-        color: rgba(255, 255, 255, 0.7);
+        color: rgba(255, 255, 255, 0.65);
         text-transform: uppercase;
-        font-weight: 500;
+        font-weight: 600;
         display: block;
         margin-bottom: 4px;
       }
 
       .page-header h1 {
-        font-size: 1.75rem;
-        font-weight: 700;
+        font-size: 1.9rem;
+        font-weight: 800;
         color: var(--text-light);
-        letter-spacing: -0.3px;
+        letter-spacing: -0.4px;
         line-height: 1.2;
       }
 
       .page-header-subtitle {
-        font-size: 13px;
-        color: rgba(255, 255, 255, 0.8);
+        font-size: 14px;
+        color: rgba(255, 255, 255, 0.75);
         font-weight: 400;
-        margin-top: 8px;
+        margin-top: 10px;
         letter-spacing: 0.3px;
+        position: relative;
+        z-index: 1;
       }
 
       .page-header-meta {
         display: flex;
         flex-wrap: wrap;
-        gap: 8px;
-        margin-top: 16px;
+        gap: 10px;
+        margin-top: 18px;
+        position: relative;
+        z-index: 1;
       }
 
       .page-header-tag {
-        background: rgba(255, 255, 255, 0.12);
+        background: rgba(255, 255, 255, 0.1);
         color: rgba(255, 255, 255, 0.9);
-        padding: 5px 14px;
+        padding: 6px 16px;
         border-radius: 20px;
         font-size: 11px;
         font-weight: 600;
         letter-spacing: 0.5px;
-        border: 1px solid rgba(255, 255, 255, 0.15);
+        border: 1px solid rgba(255, 255, 255, 0.12);
+        backdrop-filter: blur(4px);
       }
 
-      /* Content area */
       .content-area {
         background: var(--bg-card);
         border: 1px solid var(--border-card);
         border-top: none;
         border-radius: 0 0 var(--radius-lg) var(--radius-lg);
-        padding: 32px 28px 28px;
+        padding: 36px 32px 32px;
         box-shadow: var(--shadow-card);
       }
 
-      /* Section */
       .section {
-        margin-bottom: 36px;
+        margin-bottom: 40px;
       }
 
       .section:last-child {
@@ -215,24 +237,25 @@
       .section-header {
         display: flex;
         align-items: center;
-        gap: 12px;
-        margin-bottom: 20px;
-        padding-bottom: 14px;
+        gap: 14px;
+        margin-bottom: 22px;
+        padding-bottom: 16px;
         border-bottom: 2px solid var(--excel-gray-200);
       }
 
       .section-number {
-        width: 40px;
-        height: 40px;
+        width: 44px;
+        height: 44px;
         background: var(--excel-green);
         color: var(--text-light);
-        border-radius: 8px;
+        border-radius: 10px;
         display: flex;
         align-items: center;
         justify-content: center;
         font-weight: 800;
-        font-size: 16px;
+        font-size: 17px;
         flex-shrink: 0;
+        box-shadow: 0 2px 8px rgba(33, 115, 70, 0.25);
       }
 
       .section-title-group {
@@ -241,7 +264,7 @@
       }
 
       .section-title {
-        font-size: 1.2rem;
+        font-size: 1.25rem;
         font-weight: 700;
         color: var(--text-primary);
         letter-spacing: -0.2px;
@@ -255,9 +278,9 @@
         font-weight: 700;
         letter-spacing: 1px;
         text-transform: uppercase;
-        padding: 3px 10px;
+        padding: 4px 12px;
         border-radius: 4px;
-        margin-left: 8px;
+        margin-left: 10px;
         border: 1px solid rgba(33, 115, 70, 0.2);
       }
 
@@ -268,13 +291,12 @@
         font-weight: 500;
       }
 
-      /* Activity card */
       .activity {
         background: var(--excel-gray-50);
         border: 1px solid var(--border-light);
         border-radius: var(--radius-card);
         padding: 24px;
-        margin-bottom: 16px;
+        margin-bottom: 18px;
         transition: all var(--transition-smooth);
         box-shadow: var(--shadow-sm);
       }
@@ -288,25 +310,25 @@
         display: flex;
         align-items: flex-start;
         gap: 12px;
-        margin-bottom: 16px;
+        margin-bottom: 18px;
       }
 
       .activity-number {
-        width: 32px;
-        height: 32px;
+        width: 34px;
+        height: 34px;
         background: var(--excel-green);
         color: var(--text-light);
-        border-radius: 6px;
+        border-radius: 7px;
         display: flex;
         align-items: center;
         justify-content: center;
         font-weight: 700;
-        font-size: 13px;
+        font-size: 14px;
         flex-shrink: 0;
       }
 
       .activity-title {
-        font-size: 1rem;
+        font-size: 1.05rem;
         font-weight: 700;
         color: var(--text-primary);
         letter-spacing: -0.2px;
@@ -330,17 +352,16 @@
         color: var(--text-secondary);
         font-size: 13px;
         line-height: 1.8;
-        margin-bottom: 14px;
+        margin-bottom: 16px;
       }
 
       .activity-description p {
-        margin-bottom: 6px;
+        margin-bottom: 8px;
       }
 
-      /* Table styles */
       .table-wrapper {
         overflow-x: auto;
-        margin: 16px 0;
+        margin: 18px 0;
         border: 1px solid var(--border-card);
         border-radius: var(--radius-sm);
         box-shadow: var(--shadow-sm);
@@ -350,23 +371,23 @@
         width: 100%;
         border-collapse: collapse;
         font-size: 13px;
-        min-width: 500px;
+        min-width: 560px;
       }
 
       .excel-table thead th {
         background: var(--excel-header);
         color: var(--text-light);
         font-weight: 700;
-        padding: 10px 14px;
+        padding: 11px 14px;
         text-align: center;
         font-size: 12px;
         letter-spacing: 0.3px;
-        border: 1px solid rgba(255, 255, 255, 0.15);
+        border: 1px solid rgba(255, 255, 255, 0.12);
         white-space: nowrap;
       }
 
       .excel-table tbody td {
-        padding: 9px 14px;
+        padding: 10px 14px;
         border: 1px solid var(--border-light);
         color: var(--text-primary);
         background: var(--bg-card);
@@ -380,13 +401,12 @@
         background: rgba(33, 115, 70, 0.04);
       }
 
-      /* Instructions box */
       .instructions {
-        background: rgba(33, 115, 70, 0.05);
+        background: rgba(33, 115, 70, 0.04);
         border-left: 4px solid var(--excel-green);
         border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
-        padding: 14px 18px;
-        margin-top: 14px;
+        padding: 16px 20px;
+        margin-top: 16px;
       }
 
       .instructions-title {
@@ -395,7 +415,7 @@
         color: var(--excel-green);
         text-transform: uppercase;
         letter-spacing: 1px;
-        margin-bottom: 6px;
+        margin-bottom: 8px;
       }
 
       .instructions-list {
@@ -410,7 +430,7 @@
         padding: 3px 0;
         padding-left: 20px;
         position: relative;
-        line-height: 1.7;
+        line-height: 1.8;
       }
 
       .instructions-list li::before {
@@ -421,23 +441,28 @@
         font-weight: bold;
       }
 
-      /* Sub-item box */
       .sub-item {
         background: var(--bg-card);
         border: 1px solid var(--border-light);
         border-radius: var(--radius-sm);
-        padding: 16px 20px;
-        margin-top: 12px;
+        padding: 18px 22px;
+        margin-top: 14px;
+        transition: all var(--transition-smooth);
+      }
+
+      .sub-item:hover {
+        border-color: var(--border-hover);
+        box-shadow: var(--shadow-sm);
       }
 
       .sub-item-title {
-        font-size: 13px;
+        font-size: 14px;
         font-weight: 700;
         color: var(--text-primary);
-        margin-bottom: 8px;
+        margin-bottom: 10px;
         display: flex;
         align-items: center;
-        gap: 8px;
+        gap: 10px;
       }
 
       .sub-item-points {
@@ -445,8 +470,9 @@
         font-weight: 600;
         color: var(--excel-green);
         background: rgba(33, 115, 70, 0.08);
-        padding: 2px 8px;
+        padding: 3px 10px;
         border-radius: 3px;
+        white-space: nowrap;
       }
 
       .sub-item-list {
@@ -459,9 +485,9 @@
         font-size: 13px;
         color: var(--text-secondary);
         padding: 2px 0;
-        padding-left: 18px;
+        padding-left: 20px;
         position: relative;
-        line-height: 1.7;
+        line-height: 1.8;
       }
 
       .sub-item-list li::before {
@@ -470,22 +496,57 @@
         left: 4px;
         color: var(--excel-green);
         font-weight: bold;
+        font-size: 15px;
       }
 
-      /* Objectives box */
+      .style-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 12px;
+        margin-top: 14px;
+      }
+
+      @media (max-width: 600px) {
+        .style-grid {
+          grid-template-columns: 1fr;
+        }
+      }
+
+      .style-card {
+        background: var(--bg-card);
+        border: 1px solid var(--border-light);
+        border-radius: var(--radius-sm);
+        padding: 16px 18px;
+        border-left: 4px solid var(--excel-green);
+      }
+
+      .style-card-title {
+        font-size: 13px;
+        font-weight: 700;
+        color: var(--excel-green-dark);
+        margin-bottom: 6px;
+      }
+
+      .style-card p {
+        font-size: 12px;
+        color: var(--text-muted);
+        line-height: 1.7;
+        margin: 0;
+      }
+
       .objectives-box {
         background: rgba(33, 115, 70, 0.04);
         border: 1px solid rgba(33, 115, 70, 0.15);
         border-radius: var(--radius-md);
-        padding: 20px 24px;
-        margin-top: 20px;
+        padding: 22px 26px;
+        margin-top: 22px;
       }
 
       .objectives-title {
         font-size: 13px;
         font-weight: 700;
         color: var(--excel-green);
-        margin-bottom: 10px;
+        margin-bottom: 12px;
         letter-spacing: 0.3px;
       }
 
@@ -493,13 +554,22 @@
         list-style: none;
         padding: 0;
         margin: 0;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 8px 20px;
+      }
+
+      @media (max-width: 600px) {
+        .objectives-list {
+          grid-template-columns: 1fr;
+        }
       }
 
       .objectives-list li {
         font-size: 13px;
         color: var(--text-secondary);
-        padding: 3px 0;
-        padding-left: 20px;
+        padding: 4px 0;
+        padding-left: 22px;
         position: relative;
         line-height: 1.7;
       }
@@ -510,13 +580,13 @@
         left: 0;
         color: var(--excel-green);
         font-weight: bold;
+        font-size: 13px;
       }
 
-      /* Footer */
       .footer {
         border-top: 1px solid var(--excel-gray-200);
-        padding-top: 20px;
-        margin-top: 36px;
+        padding-top: 22px;
+        margin-top: 40px;
         text-align: center;
       }
 
@@ -524,16 +594,16 @@
         display: flex;
         align-items: center;
         justify-content: center;
-        gap: 12px;
+        gap: 14px;
         flex-wrap: wrap;
-        margin-bottom: 8px;
+        margin-bottom: 10px;
       }
 
       .footer-item {
         display: flex;
         align-items: center;
         gap: 6px;
-        font-size: 11px;
+        font-size: 12px;
         color: var(--text-muted);
         letter-spacing: 0.3px;
         font-weight: 500;
@@ -554,46 +624,37 @@
         font-weight: 600;
       }
 
-      /* Responsive */
       @media (max-width: 768px) {
         .page-header {
-          padding: 24px 20px 22px;
+          padding: 28px 22px 24px;
         }
-
         .page-header h1 {
-          font-size: 1.35rem;
+          font-size: 1.4rem;
         }
-
         .content-area {
-          padding: 20px 16px;
+          padding: 22px 18px;
         }
-
         .activity {
-          padding: 16px;
+          padding: 18px;
         }
-
         .section-title {
           font-size: 1.1rem;
         }
-
         .excel-table {
           font-size: 11px;
-          min-width: 400px;
+          min-width: 420px;
         }
-
         .excel-table thead th,
         .excel-table tbody td {
-          padding: 7px 10px;
+          padding: 8px 10px;
         }
       }
     </style>
   </head>
   <body>
     <div class="container">
-      <!-- Back button -->
       <a href="../index.html" class="back-btn">← Voltar ao Hub</a>
 
-      <!-- Page Header -->
       <header class="page-header">
         <div class="page-header-content">
           <div class="page-header-icon">📕</div>
@@ -603,39 +664,43 @@
           </div>
         </div>
         <p class="page-header-subtitle">
-          Avaliação prática de Excel — Construção, fórmulas e gráficos
+          Avaliação prática de Excel — Construção, formatação avançada, fórmulas
+          e gráficos
         </p>
         <div class="page-header-meta">
-          <span class="page-header-tag">📋 4 Questões</span>
+          <span class="page-header-tag">📋 6 Questões</span>
           <span class="page-header-tag">📊 10,0 pontos</span>
           <span class="page-header-tag">📈 Nota mínima: 7,0</span>
+          <span class="page-header-tag">⏱️ 50 minutos</span>
         </div>
       </header>
 
-      <!-- Content Area -->
       <div class="content-area">
-        <!-- ══════════════════════════════════ -->
-        <!-- QUESTÃO 1 — CONSTRUINDO A PLANILHA -->
-        <!-- ══════════════════════════════════ -->
+        <!-- ═══════════════ QUESTÃO 1 — CONSTRUINDO A PLANILHA ═══════════════ -->
         <section class="section">
           <div class="section-header">
             <div class="section-number">1</div>
             <div class="section-title-group">
               <h2 class="section-title">
                 Construindo a Planilha
-                <span class="section-points">2,5 pontos</span>
+                <span class="section-points">2,0 pontos</span>
               </h2>
-              <span class="section-subtitle">Digitação e formatação</span>
+              <span class="section-subtitle"
+                >Digitação, organização e formatação básica</span
+              >
             </div>
           </div>
 
           <div class="activity">
             <div class="activity-header">
               <div class="activity-number">1</div>
-              <h3 class="activity-title">Planilha de Produtos</h3>
+              <h3 class="activity-title">Planilha de Produtos da Papelaria</h3>
             </div>
             <div class="activity-description">
-              <p>Crie uma planilha exatamente como o modelo abaixo:</p>
+              <p>
+                Crie uma planilha <strong>exatamente</strong> como o modelo
+                abaixo. Preste atenção aos detalhes de formatação!
+              </p>
             </div>
 
             <div class="table-wrapper">
@@ -714,32 +779,146 @@
             </div>
 
             <div class="instructions">
-              <div class="instructions-title">Formatações obrigatórias</div>
+              <div class="instructions-title">
+                Formatações obrigatórias (0,25 ponto cada)
+              </div>
               <ul class="instructions-list">
-                <li>Cabeçalho com <strong>fundo verde escuro</strong></li>
-                <li>Letras do cabeçalho na <strong>cor branca</strong></li>
-                <li>Texto do cabeçalho em <strong>negrito</strong></li>
-                <li>Centralize <strong>todos os títulos</strong></li>
                 <li>
-                  Ajuste <strong>automaticamente</strong> a largura das colunas
+                  O cabeçalho deve ter
+                  <strong>cor de fundo e cor de letra</strong> que se destaquem
+                  do restante da tabela
                 </li>
-                <li>Aplique <strong>bordas</strong> em toda a tabela</li>
-                <li>Formate a coluna Preço como <strong>Moeda (R$)</strong></li>
+                <li>Texto do cabeçalho em <strong>negrito</strong></li>
+                <li>
+                  <strong>Alinhamento:</strong> centralize todos os títulos do
+                  cabeçalho
+                </li>
+                <li>
+                  <strong>Largura:</strong> ajuste automaticamente a largura de
+                  todas as colunas
+                </li>
+                <li>
+                  <strong>Bordas:</strong> aplique bordas em toda a tabela
+                  (contorno e grade interna)
+                </li>
+                <li>
+                  <strong>Moeda:</strong> formate a coluna Preço como
+                  <strong>Moeda (R$)</strong> com duas casas decimais
+                </li>
+                <li>
+                  <strong>Altura:</strong> aumente ligeiramente a altura das
+                  linhas para melhor leitura
+                </li>
               </ul>
             </div>
           </div>
         </section>
 
-        <!-- ══════════════════════════════════ -->
-        <!-- QUESTÃO 2 — FÓRMULAS            -->
-        <!-- ══════════════════════════════════ -->
+        <!-- ═══════════════ QUESTÃO 2 — ESTILOS E BELEZA ═══════════════ -->
         <section class="section">
           <div class="section-header">
             <div class="section-number">2</div>
             <div class="section-title-group">
               <h2 class="section-title">
-                Fórmulas
-                <span class="section-points">4,5 pontos</span>
+                Estilos e Aparência Profissional
+                <span class="section-points">1,5 ponto</span>
+              </h2>
+              <span class="section-subtitle"
+                >Deixando a planilha bonita e elegante</span
+              >
+            </div>
+          </div>
+
+          <div class="activity">
+            <div class="activity-header">
+              <div class="activity-number">2</div>
+              <h3 class="activity-title">Personalização Visual da Tabela</h3>
+            </div>
+            <div class="activity-description">
+              <p>
+                Agora que a tabela está estruturada, deixe-a com aparência
+                <strong>profissional e bonita</strong> aplicando os estilos
+                abaixo:
+              </p>
+            </div>
+
+            <div class="style-grid">
+              <div class="style-card">
+                <div class="style-card-title">🎨 Cores alternadas</div>
+                <p>
+                  Aplique <strong>cores alternadas</strong> nas linhas (efeito
+                  zebrado) usando dois tons suaves que combinem com o cabeçalho.
+                </p>
+              </div>
+              <div class="style-card">
+                <div class="style-card-title">🔤 Fonte personalizada</div>
+                <p>
+                  Altere a <strong>fonte</strong> de toda a tabela para
+                  <strong>Calibri</strong> ou <strong>Arial</strong>, tamanho
+                  11pt.
+                </p>
+              </div>
+              <div class="style-card">
+                <div class="style-card-title">📐 Centralizar dados</div>
+                <p>
+                  Centralize os dados das colunas <strong>Categoria</strong> e
+                  <strong>Quantidade</strong>.
+                </p>
+              </div>
+              <div class="style-card">
+                <div class="style-card-title">✨ Destaque no cabeçalho</div>
+                <p>
+                  Adicione uma <strong>borda inferior dupla</strong> ou mais
+                  grossa abaixo do cabeçalho para separá-lo dos dados.
+                </p>
+              </div>
+              <div class="style-card">
+                <div class="style-card-title">📏 Ajuste fino</div>
+                <p>
+                  Alinhe a coluna <strong>Preço</strong> à direita e a coluna
+                  <strong>Produto</strong> à esquerda para seguir o padrão
+                  profissional.
+                </p>
+              </div>
+              <div class="style-card">
+                <div class="style-card-title">🏷️ Título da seção</div>
+                <p>
+                  Acima da tabela, na <strong>linha 1</strong>, adicione um
+                  título
+                  <strong>"Produtos da Papelaria — Estoque 2026"</strong>
+                  mesclando as células e centralizando.
+                </p>
+              </div>
+            </div>
+
+            <div class="instructions">
+              <div class="instructions-title">Critérios de avaliação</div>
+              <ul class="instructions-list">
+                <li>
+                  Cada item aplicado corretamente vale
+                  <strong>0,25 ponto</strong>
+                </li>
+                <li>
+                  A planilha deve estar visualmente
+                  <strong>organizada e agradável</strong>
+                </li>
+                <li>
+                  As cores devem ter <strong>contraste adequado</strong> para
+                  leitura
+                </li>
+              </ul>
+            </div>
+          </div>
+        </section>
+
+        <!-- ═══════════════ QUESTÃO 3 — FÓRMULAS ═══════════════ -->
+        <section class="section">
+          <div class="section-header">
+            <div class="section-number">3</div>
+            <div class="section-title-group">
+              <h2 class="section-title">
+                Fórmulas e Funções
+                <span class="section-points">3,0 pontos</span>
               </h2>
               <span class="section-subtitle"
                 >Cálculos utilizando funções do Excel</span
@@ -749,45 +928,55 @@
 
           <div class="activity">
             <div class="activity-header">
-              <div class="activity-number">2</div>
+              <div class="activity-number">3</div>
               <h3 class="activity-title">Cálculos da Planilha</h3>
             </div>
             <div class="activity-description">
               <p>
-                Utilizando a tabela da Questão 1, realize os cálculos abaixo:
+                Utilizando a tabela da Questão 1, realize os cálculos abaixo.
+                <strong>Todos devem ser feitos com fórmulas</strong>, não com
+                valores digitados manualmente.
               </p>
             </div>
 
-            <!-- 2a -->
             <div class="sub-item">
               <div class="sub-item-title">
                 a) Total por Produto
-                <span class="sub-item-points">1,5 ponto</span>
-              </div>
-              <ul class="sub-item-list">
-                <li>Crie uma coluna chamada <strong>Total</strong></li>
-                <li>
-                  Calcule: <strong>Preço × Quantidade</strong> para todos os
-                  produtos
-                </li>
-              </ul>
-            </div>
-
-            <!-- 2b -->
-            <div class="sub-item">
-              <div class="sub-item-title">
-                b) Total Geral
                 <span class="sub-item-points">0,5 ponto</span>
               </div>
               <ul class="sub-item-list">
                 <li>
-                  Utilize a função <strong>SOMA()</strong> para calcular o valor
-                  total de todas as vendas
+                  Crie uma coluna chamada <strong>Total</strong> (coluna E)
+                </li>
+                <li>
+                  Calcule: <strong>Preço × Quantidade</strong> para todos os 10
+                  produtos
+                </li>
+                <li>Formate a coluna como <strong>Moeda (R$)</strong></li>
+              </ul>
+            </div>
+
+            <div class="sub-item">
+              <div class="sub-item-title">
+                b) Total Geral de Vendas
+                <span class="sub-item-points">0,5 ponto</span>
+              </div>
+              <ul class="sub-item-list">
+                <li>
+                  Abaixo da tabela, use <strong>=SOMA()</strong> para calcular o
+                  valor total de todas as vendas
+                </li>
+                <li>
+                  Adicione o rótulo <strong>"Total Geral"</strong> na coluna ao
+                  lado
+                </li>
+                <li>
+                  Formate o resultado em <strong>negrito</strong> e cor verde
+                  escuro
                 </li>
               </ul>
             </div>
 
-            <!-- 2c -->
             <div class="sub-item">
               <div class="sub-item-title">
                 c) Média dos Preços
@@ -795,88 +984,144 @@
               </div>
               <ul class="sub-item-list">
                 <li>
-                  Utilize a função <strong>MÉDIA()</strong> para calcular a
-                  média dos preços dos produtos
+                  Use <strong>=MÉDIA()</strong> para calcular a média dos preços
+                  dos produtos
                 </li>
+                <li>Adicione o rótulo <strong>"Preço Médio"</strong></li>
               </ul>
             </div>
 
-            <!-- 2d -->
             <div class="sub-item">
               <div class="sub-item-title">
-                d) Produto Mais Barato
+                d) Produto Mais Barato e Mais Caro
                 <span class="sub-item-points">0,5 ponto</span>
               </div>
               <ul class="sub-item-list">
                 <li>
-                  Utilize a função <strong>MÍNIMO()</strong> para descobrir o
-                  menor preço da lista
+                  Use <strong>=MÍNIMO()</strong> para descobrir o menor preço da
+                  lista
+                </li>
+                <li>
+                  Use <strong>=MÁXIMO()</strong> para descobrir o maior preço da
+                  lista
+                </li>
+                <li>
+                  Adicione os rótulos <strong>"Menor Preço"</strong> e
+                  <strong>"Maior Preço"</strong>
                 </li>
               </ul>
             </div>
 
-            <!-- 2e -->
             <div class="sub-item">
               <div class="sub-item-title">
-                e) Produto Mais Caro
+                e) Média das Quantidades
                 <span class="sub-item-points">0,5 ponto</span>
               </div>
               <ul class="sub-item-list">
                 <li>
-                  Utilize a função <strong>MÁXIMO()</strong> para descobrir o
-                  maior preço da lista
+                  Use <strong>=MÉDIA()</strong> para calcular a quantidade média
+                  de produtos
+                </li>
+                <li>Adicione o rótulo <strong>"Quantidade Média"</strong></li>
+              </ul>
+            </div>
+
+            <div class="sub-item">
+              <div class="sub-item-title">
+                f) Total de Itens em Estoque
+                <span class="sub-item-points">0,5 ponto</span>
+              </div>
+              <ul class="sub-item-list">
+                <li>
+                  Use <strong>=SOMA()</strong> para calcular a quantidade total
+                  de itens disponíveis
+                </li>
+                <li>Adicione o rótulo <strong>"Total em Estoque"</strong></li>
+              </ul>
+            </div>
+          </div>
+        </section>
+
+        <!-- ═══════════════ QUESTÃO 4 — FORMATAÇÃO CONDICIONAL ═══════════════ -->
+        <section class="section">
+          <div class="section-header">
+            <div class="section-number">4</div>
+            <div class="section-title-group">
+              <h2 class="section-title">
+                Formatação Condicional
+                <span class="section-points">1,0 ponto</span>
+              </h2>
+              <span class="section-subtitle"
+                >Destaque automático baseado em regras</span
+              >
+            </div>
+          </div>
+
+          <div class="activity">
+            <div class="activity-header">
+              <div class="activity-number">4</div>
+              <h3 class="activity-title">Realçando Informações Importantes</h3>
+            </div>
+            <div class="activity-description">
+              <p>
+                Aplique <strong>formatação condicional</strong> para destacar
+                visualmente os dados mais relevantes:
+              </p>
+            </div>
+
+            <div class="sub-item">
+              <div class="sub-item-title">
+                a) Preços altos <span class="sub-item-points">0,5 ponto</span>
+              </div>
+              <ul class="sub-item-list">
+                <li>
+                  Na coluna <strong>Preço</strong>, destaque com
+                  <strong>fundo vermelho claro</strong> todos os produtos que
+                  custam <strong>acima de R$ 10,00</strong>
+                </li>
+                <li>
+                  As letras devem ficar em <strong>vermelho escuro</strong>
                 </li>
               </ul>
             </div>
 
-            <!-- 2f -->
             <div class="sub-item">
               <div class="sub-item-title">
-                f) Média das Quantidades
-                <span class="sub-item-points">0,5 ponto</span>
+                b) Estoque baixo <span class="sub-item-points">0,5 ponto</span>
               </div>
               <ul class="sub-item-list">
                 <li>
-                  Utilize a função <strong>MÉDIA()</strong> para descobrir a
-                  quantidade média de produtos
+                  Na coluna <strong>Quantidade</strong>, destaque com
+                  <strong>fundo laranja claro</strong> os produtos com
+                  quantidade <strong>menor ou igual a 4</strong>
                 </li>
-              </ul>
-            </div>
-
-            <!-- 2g -->
-            <div class="sub-item">
-              <div class="sub-item-title">
-                g) Total de Produtos em Estoque
-                <span class="sub-item-points">0,5 ponto</span>
-              </div>
-              <ul class="sub-item-list">
                 <li>
-                  Utilize a função <strong>SOMA()</strong> para descobrir a
-                  quantidade total de itens disponíveis
+                  Adicione o ícone de <strong>alerta (⚠️)</strong> ou use
+                  negrito para chamar atenção
                 </li>
               </ul>
             </div>
           </div>
         </section>
 
-        <!-- ══════════════════════════════════ -->
-        <!-- QUESTÃO 3 — GRÁFICO DE COLUNAS   -->
-        <!-- ══════════════════════════════════ -->
+        <!-- ═══════════════ QUESTÃO 5 — GRÁFICO DE COLUNAS ═══════════════ -->
         <section class="section">
           <div class="section-header">
-            <div class="section-number">3</div>
+            <div class="section-number">5</div>
             <div class="section-title-group">
               <h2 class="section-title">
                 Gráfico de Colunas
-                <span class="section-points">1,5 ponto</span>
+                <span class="section-points">1,25 ponto</span>
               </h2>
-              <span class="section-subtitle">Criação e personalização</span>
+              <span class="section-subtitle"
+                >Criação e personalização profissional</span
+              >
             </div>
           </div>
 
           <div class="activity">
             <div class="activity-header">
-              <div class="activity-number">3</div>
+              <div class="activity-number">5</div>
               <h3 class="activity-title">Vendas da Papelaria</h3>
             </div>
             <div class="activity-description">
@@ -889,62 +1134,97 @@
             <div class="instructions">
               <div class="instructions-title">Personalizações obrigatórias</div>
               <ul class="instructions-list">
-                <li>Título: <strong>Vendas da Papelaria</strong></li>
-                <li>Exiba os <strong>valores sobre cada coluna</strong></li>
+                <li>
+                  <strong>Título do gráfico:</strong> "Vendas da Papelaria — Por
+                  Produto"
+                </li>
+                <li>
+                  Exiba os <strong>rótulos de dados</strong> (valores sobre cada
+                  coluna)
+                </li>
+                <li>
+                  Altere a <strong>cor das colunas</strong> para um tom de verde
+                  ou azul
+                </li>
+                <li>
+                  Adicione <strong>título ao eixo vertical</strong>: "Valor
+                  Total (R$)"
+                </li>
+                <li>
+                  Remova as <strong>linhas de grade horizontais</strong> para um
+                  visual mais limpo
+                </li>
+                <li>
+                  Arredonde os <strong>cantos das colunas</strong> (se
+                  disponível na versão)
+                </li>
               </ul>
             </div>
           </div>
         </section>
 
-        <!-- ══════════════════════════════════ -->
-        <!-- QUESTÃO 4 — GRÁFICO DE PIZZA     -->
-        <!-- ══════════════════════════════════ -->
+        <!-- ═══════════════ QUESTÃO 6 — GRÁFICO DE PIZZA ═══════════════ -->
         <section class="section">
           <div class="section-header">
-            <div class="section-number">4</div>
+            <div class="section-number">6</div>
             <div class="section-title-group">
               <h2 class="section-title">
                 Gráfico de Pizza
-                <span class="section-points">1,5 ponto</span>
+                <span class="section-points">1,25 ponto</span>
               </h2>
-              <span class="section-subtitle">Criação e personalização</span>
+              <span class="section-subtitle"
+                >Criação e personalização profissional</span
+              >
             </div>
           </div>
 
           <div class="activity">
             <div class="activity-header">
-              <div class="activity-number">4</div>
+              <div class="activity-number">6</div>
               <h3 class="activity-title">Distribuição do Estoque</h3>
             </div>
             <div class="activity-description">
               <p>
-                Utilizando a coluna <strong>Quantidade</strong>, crie um
-                <strong>Gráfico de Pizza</strong> mostrando a participação de
-                cada produto no estoque.
+                Utilizando as colunas <strong>Produto</strong> e
+                <strong>Quantidade</strong>, crie um
+                <strong>Gráfico de Pizza</strong> (rosca ou pizza 2D) mostrando
+                a participação de cada produto no estoque total.
               </p>
             </div>
 
             <div class="instructions">
               <div class="instructions-title">Personalizações obrigatórias</div>
               <ul class="instructions-list">
-                <li>Título: <strong>Distribuição do Estoque</strong></li>
-                <li>Exibir a <strong>legenda</strong></li>
-                <li>Exibir a <strong>porcentagem</strong> de cada fatia</li>
+                <li>
+                  <strong>Título do gráfico:</strong> "Distribuição do Estoque"
+                </li>
+                <li>Exibir a <strong>legenda</strong> à direita do gráfico</li>
+                <li>Exibir o <strong>percentual</strong> em cada fatia</li>
+                <li>
+                  Alterar a <strong>cor de cada fatia</strong> para tons
+                  diferentes (não usar cores repetidas)
+                </li>
+                <li>
+                  <strong>Explodir</strong> (destacar) a fatia do produto com
+                  maior quantidade
+                </li>
+                <li>
+                  Adicionar uma <strong>borda branca</strong> entre as fatias
+                  para separá-las
+                </li>
               </ul>
             </div>
           </div>
         </section>
 
-        <!-- ══════════════════════════════════ -->
-        <!-- OBJETIVOS AVALIADOS              -->
-        <!-- ══════════════════════════════════ -->
+        <!-- ═══════════════ OBJETIVOS AVALIADOS ═══════════════ -->
         <section class="section">
           <div class="section-header">
-            <div class="section-number">🎯</div>
+            <div class="section-number" style="background: #18522f">🎯</div>
             <div class="section-title-group">
-              <h2 class="section-title">Objetivos avaliados</h2>
+              <h2 class="section-title">Objetivos Avaliados</h2>
               <span class="section-subtitle"
-                >O que o aluno deve demonstrar</span
+                >O que o aluno deve demonstrar ao final da prova</span
               >
             </div>
           </div>
@@ -952,37 +1232,48 @@
           <div class="activity">
             <div class="objectives-box">
               <div class="objectives-title">
-                Ao finalizar esta prova, o aluno deverá demonstrar que consegue:
+                Ao concluir esta prova, o aluno deverá demonstrar que consegue:
               </div>
               <ul class="objectives-list">
-                <li>Criar e organizar uma planilha no Excel</li>
+                <li>Criar e organizar uma planilha completa no Excel</li>
                 <li>
-                  Aplicar formatações básicas (cores, bordas, alinhamento e
-                  moeda)
+                  Aplicar formatações básicas e avançadas (cores, bordas,
+                  alinhamento, moeda)
                 </li>
+                <li>
+                  Personalizar a aparência da planilha com estilos profissionais
+                </li>
+                <li>Adicionar títulos e mesclar células</li>
+                <li>Aplicar formatação condicional com regras de destaque</li>
                 <li>
                   Utilizar as funções SOMA(), MÉDIA(), MÍNIMO() e MÁXIMO()
                 </li>
-                <li>Realizar cálculos simples utilizando fórmulas</li>
+                <li>Realizar cálculos com referências de células</li>
                 <li>
-                  Criar e personalizar gráficos de colunas e de pizza para
-                  representar dados
+                  Criar e personalizar gráficos de colunas com rótulos e títulos
                 </li>
+                <li>
+                  Criar e personalizar gráficos de pizza com percentuais e
+                  legendas
+                </li>
+                <li>Explodir fatias e alterar cores em gráficos de pizza</li>
               </ul>
             </div>
           </div>
         </section>
 
-        <!-- Footer -->
+        <!-- ═══════════════ FOOTER ═══════════════ -->
         <footer class="footer">
           <div class="footer-info">
             <span class="footer-item">📕 Prova Prática</span>
             <span class="footer-dot"></span>
-            <span class="footer-item">📊 4 Questões</span>
+            <span class="footer-item">📋 6 Questões</span>
             <span class="footer-dot"></span>
-            <span class="footer-item">📋 10,0 pontos</span>
+            <span class="footer-item">📊 10,0 pontos</span>
+            <span class="footer-dot"></span>
+            <span class="footer-item">⏱️ 50 minutos</span>
           </div>
-          <p class="footer-brand">Divisão de Tecnologia Educacional</p>
+          <p class="footer-brand">Divisão de Tecnologia Educacional · SENAI</p>
         </footer>
       </div>
     </div>
